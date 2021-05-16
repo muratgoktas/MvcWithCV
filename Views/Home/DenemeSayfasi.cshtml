@@ -1,0 +1,71 @@
+﻿
+@{
+    ViewBag.Title = "DenemeSayfasi";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+  
+    @Html.DropDownList("Sehirler", new[]
+{
+    new SelectListItem {Text="Kocaeli",Value="41",Selected=true},
+    new SelectListItem{Text="İstanbul",Value="34"},
+    new SelectListItem{Text="İzmir",Value="35"},
+    new SelectListItem{Text="Muğla",Value="48"}
+
+});
+    @Html.ListBox("Sehirler", new[]
+{
+    new SelectListItem {Text="Kocaeli",Value="41"},
+    new SelectListItem{Text="Muğla",Value="48"},
+    new SelectListItem{Text="İzmir",Value="35"},
+    new SelectListItem{Text="İstanbul",Value="35"}
+});
+}
+
+<h2>DenemeSayfasi</h2>
+@using (@Html.BeginForm("DenemeSyafasi", "Home")) // Using ile açtışımız için Html.BeginForm , Html.EndForm ile kaparmaya ihtiyaç yoktur.
+{
+    @Html.Label("Adınız")@Html.TextBox("tbAd","Murat")<b/>
+    @Html.CheckBox("Onay", true);
+    @Html.Password("Şifreniz:", "");// Şifre genellike kulanıcıdan istenir
+    @Html.Password("Şifreniz:", "123456");
+    @Html.ValidationSummary("Hata Mesajları");// Bütün hata mesajlarını üste gösterir.
+    string deger = "<b>Murat</b>Selam";
+    @Html.Raw(deger)
+    @Html.ValidationMessage("İsminiz","İsim kısmı boş geçilemez!");// Hata mesajlarının kontolu için kullanılır.
+
+   @Html.TextArea("Aciklama", "Litfen açıklama yazınız.", new {cols=10,rows=5 });// Açoklama,Ön söz gibi çok yazı girişi istendiğinde kullanılır.
+    @Html.ActionLink("Eğitim Bilgilerim","egitimBilgilerim","Home")
+    @Html.Action("kisiselBilgilerim","Home")
+   
+
+}
+<ol>
+    Biryetmez Ltd. Şti
+    <li>
+        Genel Müdür
+        <ol>
+            <li>
+                Genel Müdür Yrd.
+                <ol>
+                    <li>Memur</li>
+                    <li>İşci</li>
+
+                </ol>
+            </li>
+            <li>Mali Müşavir</li>
+        </ol>
+    </li>
+    <li>Muaazaf Üye</li>
+
+</ol>
+
+<ol>
+    <li>Coffee</li>
+    <li>
+        Tea
+        <ol>
+            <li>Black tea</li>
+            <li>Green tea</li>
+        </ol>
+    </li>
+    <li>Milk</li>
+</ol>
